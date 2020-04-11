@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <meta name="description"
+          content="{{ products_count }} grüne Tees nach Preisen geordnet in der Übersicht">
+    <title>{{ products_count }} grüne Tees nach Preisen geordnet in der Übersicht</title>
+{% endblock %}
+{% block main %}
+        {% import 'keyword_pages.html' as keyword_pages %}
+        <header class="hero">
+            <div class="content">
+
+        <h1>{{ products_count }} grüne Tees nach Preisen sortiert</h1>
+                <p class="slogan">Finde den grünen Tee, der zu deinem Budget passt</p>
+
+<!--
+
+    Wieviele Stunden habe ich beim Durchstöbern der verschiedenen Shops verbracht! Es gibt da so einige Shops, deren
+    Seiten sich nur sehr mühsam durch die Leitung quälen. 1 Seite > 3,5 MB! Welche Resourcenverschwendung!
+        Jeder Klick kostet Zeit und Energie und derer sind viele. Aus der
+    Google-Suche in eine Übersichtsseite und von dort zu den einzelnen Tees, bis man sieht, dass der Preis nicht der
+    Vorstellung entspricht. Zwar hat jeder Shop eine Funktion, nach Preis zu sortieren, aber mal bezieht sich der Preis auf
+    25g, mal auf 50g und mal auf 100g. Die Sortierfunktion ist also nur Spielerei. Das muss komfortabler und schneller gehen.
+    Hier die 100g-Preise von grünen Tees nach den wichtigsten Suchbegriffen aus den größten Shops für dich abgegrast
+        in einer Übersicht und nach Preis sortiert. Für den Spaß kann man die kleinen Shops und restlichen Tees immer
+        noch einzeln durchstöbern.
+        Schließlich ist Tee ja doch auch etwas sehr invididuelles.
+-->
+
+
+            </div>
+        </header>
+        <div id="content" class="visual flex one two-800">
+            <div class="content">
+        <h1>Sencha</h1>
+            {{ keyword_pages.keyword_pages('sencha', pages, step) }}
+        <h1>Gyokuro</h1>
+            {{ keyword_pages.keyword_pages('gyokuro', pages, step) }}
+        <h1>Bancha</h1>
+            {{ keyword_pages.keyword_pages('bancha', pages, step) }}
+        <h1>Genmaicha</h1>
+            {{ keyword_pages.keyword_pages('genmaicha', pages, step) }}
+        <h1>Matcha</h1>
+            {{ keyword_pages.keyword_pages('matcha', pages, step) }}
+        <h1>China</h1>
+            {{ keyword_pages.keyword_pages('china', pages, step) }}
+        <h1>Korea</h1>
+            {{ keyword_pages.keyword_pages('korea', pages, step) }}
+            </div>
+        </div>
+{% endblock %}

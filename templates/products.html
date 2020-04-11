@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<meta name="description"
+      content="Nicht durchklicken, sondern hier in der Übersicht: {{ count }} Grüntees '{{ term }}' von {{ lowest_price }}
+          bis {{ highest_price }} Euro/100g. Oder günstiger oder teurer ...">
+<title>{{ count }} {{ term }} Grüntees von {{ lowest_price }} bis {{ highest_price }} Euro/100g.
+    Oder günstiger oder teurer ...</title>
+{% endblock %}
+{% block main %}
+
+<div id="content" class="visual flex" style="padding-top: 80px">
+    <div class="content">
+
+        <h1>
+            {{ count }} Grüntees <strong>{{ term }}</strong> von {{ lowest_price }} bis {{ highest_price }} Euro/100g
+        </h1>
+
+        <div>
+            <div class="flex two" style="padding-top: 3em">
+                <div>
+                    {%- if previous_link -%}
+                    <div class="container" style="background: chartreuse; float: left;">
+                        <a href="{{ previous_link }}">&laquo; Günstigere Grüne {{ term }} Tees</a>
+                    </div>
+                    {%- endif %}
+                </div>
+                <div>
+                    {%- if next_link -%}
+                    <div class="container" style="background: chartreuse; float: right;">
+                        <a href="{{ next_link }}">Höherpreisige Grüne {{ term }} Tees &raquo;</a>
+                    </div>
+                    {%- endif %}
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div style="color: red; text-align: center;">
+            Diese Produkte und ihre Preise wurden mit viel Liebe für grünen Tee am <strong>{{ date }}</strong> gesammelt.
+        </div>
+        <br/>
+
+        {% for product in products %}
+
+        <article class="card">
+            <header>
+                <h3>Gefunden bei {{ product.shop.name }}:</h3>
+            </header>
+
+            <div>
+                <div style="padding: 1em; text-align: center;">
+                    <span>
+                    <h2>
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                    </h2>
+                    </span>
+                </div>
+                <div style="padding: 1em; text-align: center;">
+                    <span>
+                        <blockquote>
+                    {{ product.description|replace(term, "<strong>%s</strong>"|format(term)|safe)|replace(term|lower,
+                    "<strong>%s</strong>"|format(term)|safe) }}
+                            <p style="text-align: right;">
+                                <cite>Text von {{ product.shop.name }}</cite>
+                            </p>
+                        </blockquote>
+                    </span>
+                </div>
+            </div>
+
+            <footer>
+                <h2>
+                <span class="label" style="background-color: #fff703; color: black;">
+                    {{ product.current_price }} EUR/100g
+                </span>
+                </h2>
+            </footer>
+        </article>
+        {% endfor %}
+
+            <div class="flex two" style="padding-top: 3em">
+                <div>
+                    {%- if previous_link -%}
+                    <div class="container" style="background: chartreuse; float: left;">
+                        <a href="{{ previous_link }}">&laquo; Günstigere Grüne {{ term }} Tees</a>
+                    </div>
+                    {%- endif %}
+                </div>
+                <div>
+                    {%- if next_link -%}
+                    <div class="container" style="background: chartreuse; float: right;">
+                        <a href="{{ next_link }}">Höherpreisige Grüne {{ term }} Tees &raquo;</a>
+                    </div>
+                    {%- endif %}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

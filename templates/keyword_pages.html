@@ -1,0 +1,12 @@
+{% macro keyword_pages(keyword, pages, step) -%}
+    <ul>
+    {% for page in pages[keyword] %}
+        <li>
+            <a href="{{ page['url'] }}">
+                {{ page['count'] }} Grüne Tees {{ keyword|capitalize }} Von {{ page['lowest_price'] }} bis {{ page['highest_price'] }}
+                Euro/100g
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{%- endmacro %}
