@@ -2,7 +2,8 @@
 
 Find hundrets of green teas from the biggest german speaking shops and get them ordered by price, being able to manage updates regularly on the database
 
-No fancy Javascript UI, for the sake of being visible to search engines. 
+No fancy Javascript UI, for the sake of being visible to search engines. The content is plain serverside generated HTML and not created on the Client. There is also no bloated CSS framework. There are no tons of Javascript potentially being able to do all kind of stuff. There is only [Picnic CSS](https://picnicss.com/documentation), a lightweight CSS library. The only Javascript is used to toggle the menu between mobile and desktop mode.
+
 The app is written in Python 3.7 and uses [Flask, the python micro framework for building web applications.](https://github.com/pallets/flask) and [Jinja Templates](https://jinja.palletsprojects.com/en/2.11.x/). I had to overcome the strong desire to engineer a complex UI using a modern Javascript framework. But choose the right tool for the job.
 
 There are several spiders to scrape what I idenfified as the biggest german speaking shops für green tea. A spider follows the informal interface: If a spider object is initialized, it scrapes overview and detail pages to build list of products which can be obtained by calling `get_products` on the object.
