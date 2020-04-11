@@ -1,11 +1,10 @@
 from flask import Flask, render_template, jsonify
 from flask_caching import Cache
-from model import Product, Base, Price
+from model import Product, Price
 from sqlalchemy import create_engine, or_
 from sqlalchemy.orm import sessionmaker
 from werkzeug.serving import run_simple
 from sqlalchemy import func
-from datetime import datetime
 
 engine = create_engine('postgresql://gruentee:@localhost:5432/gruentee', echo=True)
 Session = sessionmaker()
